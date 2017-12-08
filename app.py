@@ -36,7 +36,7 @@ def makeWebhookResult(req):
 
     if action == "author.birthdate":
         author = parameters.get("author")
-        speech = author + " was born in " + str(birthYears[zone]) + "."
+        speech = author + " was born in " + str(birthYears[author]) + "."
     if action == "shipping.cost":
         zone = parameters.get("shipping-zone")
         speech = "The cost of shipping to " + zone + " is " + str(cost[zone]) + " euros."
