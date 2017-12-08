@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 import urllib
 import json
 import os
@@ -28,16 +27,22 @@ def webhook():
     return r
 
 def makeWebhookResult(req):
-    if req.get("result").get("action") != "shipping.cost":
-        return {}
+
     result = req.get("result")
+    action = result.get("action")
     parameters = result.get("parameters")
-    zone = parameters.get("shipping-zone")
-
     cost = {'Europe':100, 'North America':200, 'South America':300, 'Asia':400, 'Africa':500}
+    birthYears = {'Caravaggio':1571, 'Picasso':1881, 'Bellini':1433, 'Giotto':1267}
 
-    speech = "The cost of shipping to " + zone + " is " + str(cost[zone]) + " euros."
-
+    if action == "author.birthdate":
+        author = parameters.get("author")
+        speech = author + " was born in " + str(birthYears[zone]) + "."
+    if action == "shipping.cost":
+        zone = parameters.get("shipping-zone")
+        speech = "The cost of shipping to " + zone + " is " + str(cost[zone]) + " euros."
+    else:
+        speech = "Sorry but I don't know this information, but I will improve myself :("
+     
     print("Response:")
     print(speech)
 
