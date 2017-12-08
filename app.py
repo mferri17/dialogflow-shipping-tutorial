@@ -33,12 +33,15 @@ def makeWebhookResult(req):
     parameters = result.get("parameters")
     cost = {'Europe':100, 'North America':500000, 'South America':300, 'Asia':400, 'Africa':500}
     birthYears = {'Caravaggio':1571, 'Picasso':1881, 'Bellini':1433, 'Giotto':1267}
-
+    birthCities = {'Caravaggio':'Milano', 'Picasso':'Malaga', 'Bellini':"Venezia", 'Giotto':"Vespignano"}
+    
     if action == "author.birthdate":
         author = parameters.get("author")
-        speech = author + " was born in " + str(birthYears[author])
-        speech += "."
-    if action == "shipping.cost":
+        speech = author + " was born in " + str(birthYears[author]) + "."
+    elif action == "author.birthcity":
+        author = parameters.get("author")
+        speech = author + " was born in " + str(birthCities[author]) + "."
+    elif action == "shipping.cost":
         zone = parameters.get("shipping-zone")
         speech = "The cost of shipping to " + zone + " is " + str(cost[zone]) + " euros."
     else:
