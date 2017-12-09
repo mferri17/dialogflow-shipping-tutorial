@@ -33,7 +33,7 @@ def makeWebhookResult(req):
     parameters = result.get("parameters")
     cost = {'Europe':100, 'North America':500000, 'South America':300, 'Asia':400, 'Africa':500}
     birthYears = {'Caravaggio':1571, 'Picasso':1881, 'Bellini':1433, 'Giotto':1267}
-    birthCities = {'Caravaggio':'Milano', 'Picasso':'Malaga', 'Bellini':'Venezia', 'Giotto':"Vespignano"}
+    birthCities = {'Caravaggio':'Milano', 'Picasso':'Malaga', 'Bellini':'Venezia', 'Giotto':'Vespignano'}
     
     if action == "author.birthdate":
         author = parameters.get("author")
